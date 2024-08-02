@@ -2,8 +2,8 @@ import React from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import List from './List';
 
-export default function Lists({ todoData, setTodoData }) {
-
+const Lists = React.memo(({ todoData, setTodoData }) => {
+    console.log('Lists Component')
     const handleEnd = (result) => {
         console.log('result', result);
 
@@ -20,37 +20,40 @@ export default function Lists({ todoData, setTodoData }) {
         setTodoData(newTodoData);
     }
 
+
     return (
         <div>
-            <DragDropContext onDragEnd={handleEnd}>
-                <Droppable droppableId='todo'>
-                    {(provided) => (
-                        <div {...provided.droppableProps} ref={provided.innerRef}>
-                            {todoData.map((data, index) => (
-                                <Draggable
-                                    key={data.id}
-                                    draggableId={data.id.toString()}
-                                    index={index}
-                                >
-                                    {(provided, snapshot) => (
-                                        <List
-                                            key={data.id}
-                                            id={data.id}
-                                            title={data.title}
-                                            completed={data.completed}
-                                            todoData={todoData}
-                                            setTodoData={setTodoData}
-                                            provided={provided}
-                                            snapshot={snapshot}
-                                        />
-                                    )}
-                                </Draggable>
-                            ))}
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
-            </DragDropContext>
-        </div>
+        <DragDropContext onDragEnd={handleEnd}>
+            <Droppable droppableId='todo'>
+                {(provided) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                        {todoData.map((data, index) => (
+                            <Draggable
+                                key={data.id}
+                                draggableId={data.id.toString()}
+                                index={index}
+                            >
+                                {(provided, snapshot) => (
+                                    <List
+                                        key={data.id}
+                                        id={data.id}
+                                        title={data.title}
+                                        completed={data.completed}
+                                        todoData={todoData}
+                                        setTodoData={setTodoData}
+                                        provided={provided}
+                                        snapshot={snapshot}
+                                    />
+                                )}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
+        </DragDropContext>
+    </div>
     )
-}
+})
+
+export default Lists
