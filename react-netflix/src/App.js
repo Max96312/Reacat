@@ -1,12 +1,33 @@
+import { Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Banner from './components/Banner';
+import Footer from './components/Footer';
 import Nav from './components/Nav';
+import MainPage from './pages/MainPage';
+import SearchPage from './pages/SearchPage';
+import DetailPage from './pages/DetailPage';
+
+const Layout = () => {
+  return(
+    <div>
+      <Nav />
+
+      <Outlet />
+
+      <Footer />
+    </div>
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <Nav />
-      <Banner />
+    <div className="app">
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<MainPage />} />
+          <Route path=':movieId' element={<DetailPage />} />
+          <Route path='search' element={<SearchPage />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
