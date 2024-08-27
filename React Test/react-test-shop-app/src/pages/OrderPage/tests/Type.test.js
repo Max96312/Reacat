@@ -9,7 +9,7 @@ test("display product images from server", async () => {
   const productImages = await screen.findAllByRole("img", {
     name: /product$/i,
   });
-  expect(productImages).toHaveToLength(2);
+  expect(productImages).toHaveLength(2);
 
   const altText = productImages.map((element) => element.alt);
   expect(altText).toEqual(["America product", "England product"]);
@@ -26,4 +26,11 @@ test("when fetching product datas, face an error", async () => {
 
   const errorBanner = await screen.findByTestId("error-banner");
   expect(errorBanner).toHaveTextContent("에러가 발생했습니다.");
+});
+
+test("fetch option information from server", () => {
+  render(<Type orderType="options" />);
+
+  const optionCheckboxes = screen.findAllByRole("checkbox");
+  expect(optionCheckboxes).toHaveLength(2);
 });
