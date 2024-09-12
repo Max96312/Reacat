@@ -1,0 +1,18 @@
+.ztree { width:320px; display: flex; flex-direction: column; gap:  16px; height: 100%; border-right: 1px solid var(--gray300); padding-right: 40px;}
+.ztreeUl { flex:1; overflow: hidden; overflow-y: auto;  }
+
+.jstree-default .jstree-node i { background-size: initial; }
+.jstree-default .jstree-themeicon { display: none; }
+.jstree-default .jstree-open>.jstree-ocl { background-image: url(./assets/ztree-open.svg); background-position: 0 0;  }
+.jstree-default .jstree-closed>.jstree-ocl { background-image: url(./assets/ztree-close.svg); background-position: 0 0; }
+.jstree-default .jstree-search {font-style: normal;background: var(--primary50);font-weight: normal;color: var(--primary500);}
+.jstree-default .jstree-anchor, .jstree-default .jstree-wholerow { transition: background-color .2s,box-shadow .2s;}
+
+.jstree-default .jstree-anchor>.jstree-undetermined {  background-image: url(../images/icon/ztree-chk.svg); background-position: 0 0; opacity: 0.5; }
+.jstree-default .jstree-checkbox { background-image: url(../images/icon/ztree-chk.svg); background-position: 0 0; }
+.jstree-default .jstree-checkbox:hover { background-image: url(../images/icon/ztree-chk.svg); background-position: 0 0; }
+.jstree-default.jstree-checkbox-selection .jstree-clicked>.jstree-checkbox, .jstree-default .jstree-checked>.jstree-checkbox {  background-image: url(../images/icon/ztree-chkOn.svg); background-position: 0 0;  }
+.jstree-default .jstree-clicked { background:#E9F0FF; box-shadow: none}
+.jstree-default.jstree-checkbox-selection .jstree-clicked>.jstree-checkbox:hover, .jstree-default .jstree-checked>.jstree-checkbox:hover {  background-image: url(../images/icon/ztree-chkOn.svg); background-position: 0 0;   }
+
+.jstree-anchor { padding-left:0; margin-left:1px; }
